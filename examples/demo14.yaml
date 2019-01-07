@@ -31,4 +31,4 @@ output :
 # Define the input files
 input :
     generative_model :
-        file_name : 'https://raw.githubusercontent.com/EiffL/GalSim-Hub/master/modules/generative_model.tar.gz'
+        file_name : 'hub:cosmos_size_mag'
