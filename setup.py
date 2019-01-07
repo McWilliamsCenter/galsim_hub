@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='galsim_hub',
-    version='0.0.1rc1',
+    version='0.0.1rc2',
     description='Support for Tensorflow Hub modules in GalSim',
     long_description=long_description,
     long_description_content_type='text/markdown',
