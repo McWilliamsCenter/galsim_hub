@@ -1,0 +1,34 @@
+modules:
+    - galsim_hub
+
+psf :
+    type : Gaussian
+    sigma : 0.06  # arcsec
+
+# Define the galaxy profile
+gal :
+    type : GenerativeModelGalaxy
+    flux_radius : { type : Random , min : 5, max : 10 }
+    mag_auto : { type : Random , min : 24., max : 25. }
+
+# The image field specifies some other information about the image to be drawn.
+image :
+    type : Tiled
+    nx_tiles : 10
+    ny_tiles : 10
+
+    stamp_size : 64  # pixels
+
+    pixel_scale : 0.03  # arcsec / pixel
+
+    noise :
+       type : COSMOS
+
+output :
+    dir : output_yaml
+    file_name : demo14.fits
+
+# Define the input files
+input :
+    generative_model :
+        file_name : 'https://raw.githubusercontent.com/EiffL/GalSim-Hub/master/modules/generative_model.tar.gz'
