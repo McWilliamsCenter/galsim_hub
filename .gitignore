@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 
 output_yaml
+website/node_modules
