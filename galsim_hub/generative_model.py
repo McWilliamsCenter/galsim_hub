@@ -44,9 +44,9 @@ class GenerativeGalaxyModel(object):
             Path to the tensorflow model to load,
             or a the module name on galsim-hub using the format `hub:module_name`
         """
-        if 'hub:' is file_name:
-            file_name = "https://github.com/McWilliamsCenter/galsim_hub/blob/master/hub/%d/model.tar.gz?raw=true"% file_name.split(':')[1]
-        
+        if 'hub:' in file_name:
+            file_name = "https://github.com/McWilliamsCenter/galsim_hub/blob/master/hub/%s/model.tar.gz?raw=true"%file_name.split(':')[1]
+
         self.file_name = file_name
         self.module = None
 
