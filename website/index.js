@@ -1,7 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
 import * as ta from 'time-ago';
 
-const data = require('./web_model/weights_manifest.json');
 
 const fakeCanvas = document.getElementById('fake-canvas');
 const testModel = document.getElementById('test');
@@ -16,7 +15,10 @@ async function generateAndVisualizeImages(generator) {
   const combinedFakes = tf.tidy(() => {
 
     const t0 = tf.util.now();
-    const generatedImages = generator.predict(tf.randomNormal([10, 64]));
+    const generatedImages = generator.executeAsync({'flux_radius':tf.randomNormal([10]),
+                                                    'mag_auto':tf.randomNormal([10]),
+                                                    'module_apply_default/module_apply_default/Normal/sample/Reshape':tf.randomNormal([10,64])});
+    console.log(generatedImages);
     generatedImages.dataSync();  // For accurate timing benchmark.
     const elapsed = tf.util.now() - t0;
     // Concatenate the images horizontally into a single image.
@@ -30,8 +32,8 @@ async function generateAndVisualizeImages(generator) {
 
 async function init() {
 
-  const LOCAL_WEIGHTS_PATH = 'https://raw.githubusercontent.com/EiffL/GalSim-Hub/tensorflowjs/web_model/weights_manifest.json';
-  const LOCAL_MODEL_PATH = 'https://raw.githubusercontent.com/EiffL/GalSim-Hub/tensorflowjs/web_model/tensorflowjs_model.pb';
+  const LOCAL_WEIGHTS_PATH = 'https://raw.githubusercontent.com/EiffL/GalSim-Hub/master/webmodel/weights_manifest.json';
+  const LOCAL_MODEL_PATH = 'https://raw.githubusercontent.com/EiffL/GalSim-Hub/master/webmodel/tensorflowjs_model.pb';
 
   // Attempt to load locally-saved model. If it fails, activate the
   // "Load hosted model" button.
