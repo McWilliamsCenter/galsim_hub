@@ -22,11 +22,11 @@ import galsim
 import galsim_hub
 from astropy.table import Table
 
-model = galsim_hub.GenerativeGalaxyModel('hub:cosmos_size_mag')
+model = galsim_hub.GenerativeGalaxyModel('hub:cosmos_size_mag_z')
 
 # Defines the input conditions, for this model flux_radius and mag_auto
-cat = Table([[5., 10. ,20.], [24., 24., 24.] ],
-             names=['flux_radius', 'mag_auto'])
+cat = Table([[5., 10. ,20.], [24., 24., 24.], [0.5, 0.5, 0.5] ],
+             names=['flux_radius', 'mag_auto', 'zphot'])
 
 # Sample light profiles for these parameters
 ims = model.sample(cat)
