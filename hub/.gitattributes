@@ -1,0 +1,1 @@
+cosmos_size_mag_z/model.tar.gz filter=lfs diff=lfs merge=lfs -text
