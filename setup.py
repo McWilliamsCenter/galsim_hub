@@ -29,5 +29,5 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     packages=['galsim_hub'],
-    install_requires=['galsim', 'tensorflow', 'tensorflow_hub']
+    install_requires=['galsim', 'tensorflow_hub']
 )
