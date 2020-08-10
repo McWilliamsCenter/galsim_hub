@@ -9,7 +9,6 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='galsim_hub',
-    version='0.0.1rc2',
     description='Support for Tensorflow Hub modules in GalSim',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -23,11 +22,13 @@ setup(
         'Topic :: Scientific/Engineering :: Astronomy',
         # Pick your license as you wish
         'License :: OSI Approved :: MIT License',
-
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
     packages=['galsim_hub'],
+    use_scm_version=True,
+    setup_requires=["setuptools_scm"],
     install_requires=['galsim', 'tensorflow_hub']
 )
