@@ -1,4 +1,5 @@
 from setuptools import setup
+from setuptools import find_packages
 from io import open
 from os import path
 
@@ -27,7 +28,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    packages=['galsim_hub'],
+    packages=find_packages(),
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     install_requires=['galsim', 'tensorflow_hub']
