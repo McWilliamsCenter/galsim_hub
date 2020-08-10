@@ -15,6 +15,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/McWilliamsCenter/galsim_hub',
     author='Francois Lanusse',
+    author_email='francois.lanusse@cea.fr',
     classifiers=[
         'Development Status :: 3 - Alpha',
 
