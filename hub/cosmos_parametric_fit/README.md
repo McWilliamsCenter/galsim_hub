@@ -1,5 +1,5 @@
-# COSMOS galaxy model conditioned on bulgefit parameters
+# [LEGACY] COSMOS galaxy model conditioned on bulgefit parameters
 
 Author: Francois Lanusse
-Code: TBD
-Description: TBD
+
+This module is deprecated, and will be removed at the next release. Please do not use.
