@@ -1,6 +1,6 @@
 # GalSim Hub
 
-[![PyPI](https://img.shields.io/pypi/v/galsim-hub)](https://pypi.org/project/galsim-hub/) [![PyPI - License](https://img.shields.io/pypi/l/galsim-hub)](https://github.com/McWilliamsCenter/galsim_hub/blob/master/LICENSE) 
+[![arXiv:2008.03833](https://img.shields.io/badge/astro--ph.IM-arXiv%3A2008.03833-B31B1B.svg)](https://arxiv.org/abs/2008.03833) [![PyPI](https://img.shields.io/pypi/v/galsim-hub)](https://pypi.org/project/galsim-hub/) [![PyPI - License](https://img.shields.io/pypi/l/galsim-hub)](https://github.com/McWilliamsCenter/galsim_hub/blob/master/LICENSE) 
 
 GalSim Hub provides a collection of TensorFlow modules for GalSim.
 
