@@ -64,6 +64,8 @@ profiles = model.sample(catalog)
 This repository is intended to host a collection of deep generative models, any new contributions are welcome.
 Submitting your model to the Hub means that it becomes trivially accessible to any GalSim user, increasing the chances that it will be used in practice :-)
 
-To submit a model, please open a Pull Request adding a new folder under the `hub`directory. As the procedure is not currently completely documented, do not hesitate to reach out to the maintainers of the repository for guidance.
+The current specifications for a model can be found [here](specifications.md).
+
+To submit a model, please open a Pull Request adding a new folder under the `hub`directory. As the procedure is not currently completely documented, do not hesitate to reach out to the maintainers of the repository for guidance. 
 
 
