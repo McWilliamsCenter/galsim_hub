@@ -90,10 +90,12 @@ class GenerativeGalaxyModel(object):
         # Populate feed dictionary with input data
         feed_dict={self.inputs[k]: cat[k] for k in self.quantities}
 
-        # If not provided, create a RNG
+        # If not provided, create a RNG with random seed. If you want reproducible results, give a rng with controled seed in the sample args.
         if rng is None:
-            rng = galsim.BaseDeviate(rng)
-            orig_rng = rng.duplicate()
+            rng = galsim.GaussianDeviate(seed=None, mean=0.0, sigma=1.0)
+
+            ''' We never use that right ? '''
+            # orig_rng = rng.duplicate()  
 
         # Look for requested random_variables
         if 'random_normal' in self.random_variables:
@@ -101,8 +103,7 @@ class GenerativeGalaxyModel(object):
             noise_shape = self.module.get_input_info_dict()['random_normal'].get_shape()
             noise_shape = [len(cat)] + [noise_shape[i+1].value for i in range(len(noise_shape)-1)]
             noise_array = np.empty(np.prod(noise_shape), dtype=float)
-            gd = galsim.random.GaussianDeviate(rng, sigma=1)
-            gd.generate(noise_array)
+            rng.generate(noise_array)
             feed_dict[self.inputs['random_normal']] = noise_array.reshape(noise_shape).astype('float32')
 
         # Run the graph
