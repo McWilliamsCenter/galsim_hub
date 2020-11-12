@@ -23,6 +23,11 @@ TODO: add more documentation
 import galsim
 import numpy as np
 import tensorflow as tf
+if tf.__version__[0]=='2':
+    import tensorflow.compat.v1 as tf
+    # To make tf 2.0 compatible with tf1.0 code, we disable the tf2.0 functionalities
+    tf.disable_eager_execution()
+    tf.disable_v2_tensorshape()
 import tensorflow_hub as hub
 
 class GenerativeGalaxyModel(object):
