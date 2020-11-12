@@ -33,6 +33,7 @@ To install:
  $ pip install --user galsim-hub
 ```
 **Note**: GalSim-Hub currently assumes TensorFlow 1.15 to be installed, and will not try to install it as a dependency.
+If only TensorFlow 2.x is available, then it disables the v2 behaviour globally.
 
 
 ## Usage
