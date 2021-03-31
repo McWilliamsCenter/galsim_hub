@@ -24,7 +24,7 @@ import galsim
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-
+import matplotlib.pyplot as plt
 class GenerativeGalaxyModel(object):
     """
     Generator object
@@ -34,7 +34,7 @@ class GenerativeGalaxyModel(object):
     _opt_params = {}
     _single_params = []
 
-    def __init__(self, file_name=None):
+    def __init__(self, file_name=None, num_channels=1):
         """
         Initialisation of the generator, by loading a tensorflow model
 
@@ -59,6 +59,7 @@ class GenerativeGalaxyModel(object):
         module = hub.Module(self.file_name)
         self.stamp_size = module.get_attached_message("stamp_size", tf.train.Int64List).value[0]
         self.pixel_size = module.get_attached_message("pixel_size", tf.train.FloatList).value[0]
+        self.num_channels = num_channels
         for k in module.get_input_info_dict():
             # Check for random variables
             if 'random_normal' in k:
@@ -107,22 +108,26 @@ class GenerativeGalaxyModel(object):
 
         # Run the graph
         x = self.sess.run(self.generated_images, feed_dict=feed_dict)
-
+        print(x.shape)
         # Now, we build an InterpolatedImage for each of these
         ims = []
         for i in range(len(x)):
-            im = galsim.Image(np.ascontiguousarray(x[i].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)),
-                              scale=self.pixel_size)
-
-            ims.append(galsim.InterpolatedImage(im,
-                                                x_interpolant=x_interpolant,
-                                                k_interpolant=k_interpolant,
-                                                pad_factor=pad_factor,
-                                                noise_pad_size=noise_pad_size,
-                                                noise_pad=noise,
-                                                rng=rng,
-                                                gsparams=gsparams))
-        if len(ims) == 1:
-            ims = ims[0]
+          ims_tmp = []
+          plt.imshow(np.ascontiguousarray(x[i,:,:,0].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)))
+          plt.show()
+          for j in range(self.num_channels):
+            im = galsim.Image(np.ascontiguousarray(x[i,:,:,j].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)),
+                                  scale=self.pixel_size)
+            ims_tmp.append(galsim.InterpolatedImage(im,
+                                                    x_interpolant=x_interpolant,
+                                                    k_interpolant=k_interpolant,
+                                                    pad_factor=pad_factor,
+                                                    noise_pad_size=noise_pad_size,
+                                                    noise_pad=noise,
+                                                    rng=rng,
+                                                    gsparams=gsparams))
+          ims.append(ims_tmp)
+          #if len(ims) == 1:
+          #    ims = ims[0]
 
         return ims
