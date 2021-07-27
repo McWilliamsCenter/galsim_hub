@@ -24,7 +24,7 @@ import galsim
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-import matplotlib.pyplot as plt
+
 class GenerativeGalaxyModel(object):
     """
     Generator object
