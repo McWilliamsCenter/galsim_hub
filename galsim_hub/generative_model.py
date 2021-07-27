@@ -111,22 +111,22 @@ class GenerativeGalaxyModel(object):
         # Now, we build an InterpolatedImage for each of these
         ims = []
         for i in range(len(x)):
-          ims_tmp = []
-          for j in range(self.num_channels):
-            im = galsim.Image(np.ascontiguousarray(x[i,:,:,j].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)),
+            ims_tmp = []
+            for j in range(self.num_channels):
+                im = galsim.Image(np.ascontiguousarray(x[i,:,:,j].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)),
                                   scale=self.pixel_size)
-            ims_tmp.append(galsim.InterpolatedImage(im,
-                                                    x_interpolant=x_interpolant,
-                                                    k_interpolant=k_interpolant,
-                                                    pad_factor=pad_factor,
-                                                    noise_pad_size=noise_pad_size,
-                                                    noise_pad=noise,
-                                                    rng=rng,
-                                                    gsparams=gsparams))
-          if len(ims_tmp) == 1:
-              ims_tmp = ims_tmp[0]
-          ims.append(ims_tmp)
+                ims_tmp.append(galsim.InterpolatedImage(im,
+                                                        x_interpolant=x_interpolant,
+                                                        k_interpolant=k_interpolant,
+                                                        pad_factor=pad_factor,
+                                                        noise_pad_size=noise_pad_size,
+                                                        noise_pad=noise,
+                                                        rng=rng,
+                                                        gsparams=gsparams))
+            if len(ims_tmp) == 1:
+                ims_tmp = ims_tmp[0]
+            ims.append(ims_tmp)
         if len(ims) == 1:
-          ims = ims[0]
+            ims = ims[0]
 
         return ims
