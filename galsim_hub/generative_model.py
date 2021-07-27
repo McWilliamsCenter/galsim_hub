@@ -123,8 +123,10 @@ class GenerativeGalaxyModel(object):
                                                     noise_pad=noise,
                                                     rng=rng,
                                                     gsparams=gsparams))
+          if len(ims_tmp) == 1:
+              ims_tmp = ims_tmp[0]
           ims.append(ims_tmp)
-          #if len(ims) == 1:
-          #    ims = ims[0]
+        if len(ims) == 1:
+          ims = ims[0]
 
         return ims
