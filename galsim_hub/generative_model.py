@@ -108,7 +108,6 @@ class GenerativeGalaxyModel(object):
 
         # Run the graph
         x = self.sess.run(self.generated_images, feed_dict=feed_dict)
-        print(x.shape)
         # Now, we build an InterpolatedImage for each of these
         ims = []
         for i in range(len(x)):
