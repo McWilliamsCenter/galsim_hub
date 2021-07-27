@@ -113,8 +113,6 @@ class GenerativeGalaxyModel(object):
         ims = []
         for i in range(len(x)):
           ims_tmp = []
-          plt.imshow(np.ascontiguousarray(x[i,:,:,0].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)))
-          plt.show()
           for j in range(self.num_channels):
             im = galsim.Image(np.ascontiguousarray(x[i,:,:,j].reshape((self.stamp_size, self.stamp_size)).astype(np.float64)),
                                   scale=self.pixel_size)
